@@ -8,6 +8,8 @@ return [
 
     'default_authenticator' => DefaultAuthenticator::class,
 
+    'authentication_driver' => \Raid\Guardian\Drivers\JwtDriver::class,
+
     'guardian_authenticators' => [],
 
     'authenticator_matchers' => [

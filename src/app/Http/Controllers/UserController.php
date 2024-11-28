@@ -22,7 +22,7 @@ class UserController extends Controller
         return response()->json([
             'id' => $authenticator->getAuthenticatable('id'),
             'name' => $authenticator->getAuthenticatable('name'),
-            'token' => $authenticator->getStringToken(),
+            'token' => $authenticator->getToken(),
         ]);
     }
 }
