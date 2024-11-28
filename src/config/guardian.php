@@ -8,7 +8,7 @@ return [
 
     'default_authenticator' => DefaultAuthenticator::class,
 
-    'authentication_driver' => \Raid\Guardian\Drivers\SanctumDriver::class,
+    'default_driver' => \Raid\Guardian\Drivers\SanctumDriver::class,
 
     'guardian_authenticators' => [],
 
