@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\JwtUser;
+use App\Models\SanctumUser;
+use App\Models\User;
+
 return [
 
     /*
@@ -40,6 +44,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'jwt-user' => [
+            'driver' => 'jwt',
+            'provider' => 'jwt-users',
+        ],
+        'sanctum-user' => [
+            'driver' => 'sanctum',
+            'provider' => 'sanctum-users',
+        ],
     ],
 
     /*
@@ -62,13 +74,16 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'jwt-users' => [
+            'driver' => 'eloquent',
+            'model' => JwtUser::class,
+        ],
+        'sanctum-users' => [
+            'driver' => 'eloquent',
+            'model' => SanctumUser::class,
+        ],
     ],
 
     /*
