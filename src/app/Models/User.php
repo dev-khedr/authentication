@@ -8,9 +8,12 @@ use Illuminate\Notifications\Notifiable;
 use Raid\Guardian\Authenticatable\Contracts\AuthenticatableInterface;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject, AuthenticatableInterface
+class User extends Authenticatable implements AuthenticatableInterface
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
+
+    protected $table = 'users';
 
     protected $fillable = [
         'name',
@@ -34,15 +37,5 @@ class User extends Authenticatable implements JWTSubject, AuthenticatableInterfa
     public function findForAuthentication(string $attribute, mixed $value): ?AuthenticatableInterface
     {
         return $this->where($attribute, $value)->first();
-    }
-
-    public function getJWTIdentifier(): string
-    {
-        return $this->getKey();
-    }
-
-    public function getJWTCustomClaims(): array
-    {
-        return [];
     }
 }
