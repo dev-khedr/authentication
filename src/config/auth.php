@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\JwtUser;
+use App\Models\PassportUser;
 use App\Models\SanctumUser;
 use App\Models\User;
 
@@ -44,6 +45,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'passport-user' => [
+            'driver' => 'passport',
+            'provider' => 'passport-users',
+        ],
         'jwt-user' => [
             'driver' => 'jwt',
             'provider' => 'jwt-users',
@@ -75,6 +80,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => User::class,
+        ],
+        'passport-users' => [
+            'driver' => 'eloquent',
+            'model' => PassportUser::class,
         ],
         'jwt-users' => [
             'driver' => 'eloquent',
